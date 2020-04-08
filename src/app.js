@@ -11,6 +11,7 @@ const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
 
 const app = express();  // create app
+const port = process.env.PORT || 3000;
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public');  // absolute path to 'public' directory
@@ -118,7 +119,7 @@ app.get('*', (req, res) => {
     });
 });
 
-// port 3000 is common development port, starts server
-app.listen(3000, () => {
-    console.log('Server is up on port 3000');   // never displays in browser
+// set up for Heroku or port 3000
+app.listen(port, () => {
+    console.log('Server is up on port ' + port);   // never displays in browser
 });
